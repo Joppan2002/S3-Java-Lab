@@ -1,0 +1,14 @@
+import java.io.*;
+
+class filefirst
+{
+	public static void main(String args[]) throws IOException
+	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("Enter the string to be written to the file");
+		String str = br.readLine();
+		FileWriter fw = new FileWriter("test.txt");
+		fw.write(str);
+		fw.close();
+	}
+}
