@@ -1,14 +1,21 @@
 import java.io.*;
+import java.util.Scanner;
 
-class filefirst
+public class WriteToFile
 {
-	public static void main(String args[]) throws IOException
+    public static void main(String[] args) 
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a string: ");
+        String str = scanner.nextLine();
+        try {
+            FileWriter fileWriter = new FileWriter("WriteToFile.txt");
+            fileWriter.write(str);
+            fileWriter.close();
+        } 
+	catch (IOException e) 
 	{
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("Enter the string to be written to the file");
-		String str = br.readLine();
-		FileWriter fw = new FileWriter("test.txt");
-		fw.write(str);
-		fw.close();
-	}
+            e.printStackTrace();
+        }
+    }
 }
