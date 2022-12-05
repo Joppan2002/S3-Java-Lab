@@ -1,0 +1,26 @@
+import java.io.*;
+
+public class Charactercount
+ {
+	public static void main(String[] args) throws IOException 
+    {
+		FileReader fr = new FileReader("test.txt");
+		BufferedReader br = new BufferedReader(fr);
+		int count = 0;
+		int line = 0;
+		int word = 0;
+		String s;
+		while ((s = br.readLine()) != null) {
+			line++;
+			String[] words = s.split(" ");
+			word = word + words.length;
+			for (String w : words) {
+				count = count + w.length();
+			}
+		}
+		System.out.println("Number of characters : " + count);
+		System.out.println("Number of words : " + word);
+		System.out.println("Number of lines : " + line);
+		br.close();
+    }
+}
