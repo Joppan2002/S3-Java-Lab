@@ -1,0 +1,27 @@
+/*Ee code work aavum. BUt its not in the required way*/
+
+public class MultithreadingExample implements Runnable{
+ 
+    public static void main(String[] args) {
+        MultithreadingExample runnable = new MultithreadingExample();
+        Thread t1 = new Thread(runnable);
+        Thread t2 = new Thread(runnable);
+        Thread t3 = new Thread(runnable);
+        t1.start();
+        t2.start();
+        t3.start();
+    }
+ 
+    @Override
+    public void run() {
+        synchronized (this) {
+            int random = (int) (Math.random() * 100);
+            System.out.println("Generated Random Number: " + random);
+            if (random % 2 == 0) {
+                System.out.println("Computed Square: " + (random * random));
+            } else {
+                System.out.println("Computed Cube: " + (random * random * random));
+            }
+        }
+    }
+}
