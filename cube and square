@@ -25,3 +25,79 @@ public class MultithreadingExample implements Runnable{
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*public class MultiThreading {
+
+public static void main(String[] args) {
+
+Thread t1 = new Thread(new Runnable() {
+
+public void run() {
+
+try {
+
+while (true) {
+
+int randomInt = (int) (Math.random() * 100);
+
+System.out.println("Random Integer generated: " + randomInt);
+
+if (randomInt % 2 == 0) {
+
+Thread t2 = new Thread(new Runnable() {
+
+public void run() {
+
+int result = (int) Math.pow(randomInt, 2);
+
+System.out.println("Result of Square : " + result);
+
+}
+
+});
+
+t2.start();
+
+} else {
+
+Thread t3 = new Thread(new Runnable() {
+
+public void run() {
+
+int result = (int) Math.pow(randomInt, 3);
+
+System.out.println("Result of Cube : " + result);
+
+}
+
+});
+
+t3.start();
+
+}
+
+Thread.sleep(1000);
+
+}
+}
+catch (Exception e)
+{
+    System.out.println(e);
+}
+}
+});
+}
+}*/
