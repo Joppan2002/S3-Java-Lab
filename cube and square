@@ -1,103 +1,60 @@
-/*Ee code work aavum. BUt its not in the required way*/
+public class ThreadDemo {
 
-public class MultithreadingExample implements Runnable{
- 
-    public static void main(String[] args) {
-        MultithreadingExample runnable = new MultithreadingExample();
-        Thread t1 = new Thread(runnable);
-        Thread t2 = new Thread(runnable);
-        Thread t3 = new Thread(runnable);
-        t1.start();
-        t2.start();
-        t3.start();
-    }
- 
-    @Override
-    public void run() {
-        synchronized (this) {
-            int random = (int) (Math.random() * 100);
-            System.out.println("Generated Random Number: " + random);
-            if (random % 2 == 0) {
-                System.out.println("Computed Square: " + (random * random));
-            } else {
-                System.out.println("Computed Cube: " + (random * random * random));
-            }
-        }
-    }
+	public static void main(String[] args) {
+	Thread t1 = new Thread(new Runnable() {
+	
+	public void run() {
+	
+	try {
+	
+	int randomInt = (int) (Math.random()*10000);
+	
+	System.out.println("Random Integer generated: " + randomInt);
+	
+	if (randomInt % 2 == 0) {
+	
+	Thread t2 = new Thread(new Runnable() {
+	
+	public void run() {
+	
+	int result = (int) Math.pow(randomInt, 2);
+	
+	System.out.println("Result of Square : " + result);
+	
+	}
+	
+	});
+	Thread.sleep(1000);
+	t2.start();
+	
+	} else {
+	
+	Thread t3 = new Thread(new Runnable() {
+	
+	public void run() {
+	
+	int result = (int) Math.pow(randomInt, 3);
+	
+	System.out.println("Result of Cube : " + result);
+	
+	}
+	
+	});
+	Thread.sleep(1000);
+	t3.start();
+	
+	}
+	
+	Thread.sleep(1000);
+	
+	}
+	
+	catch (Exception e)
+	{
+		System.out.println(e);
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*public class MultiThreading {
-
-public static void main(String[] args) {
-
-Thread t1 = new Thread(new Runnable() {
-
-public void run() {
-
-try {
-
-while (true) {
-
-int randomInt = (int) (Math.random() * 100);
-
-System.out.println("Random Integer generated: " + randomInt);
-
-if (randomInt % 2 == 0) {
-
-Thread t2 = new Thread(new Runnable() {
-
-public void run() {
-
-int result = (int) Math.pow(randomInt, 2);
-
-System.out.println("Result of Square : " + result);
-
+	});
+	t1.start();
 }
-
-});
-
-t2.start();
-
-} else {
-
-Thread t3 = new Thread(new Runnable() {
-
-public void run() {
-
-int result = (int) Math.pow(randomInt, 3);
-
-System.out.println("Result of Cube : " + result);
-
-}
-
-});
-
-t3.start();
-
-}
-
-Thread.sleep(1000);
-
-}
-}
-catch (Exception e)
-{
-    System.out.println(e);
-}
-}
-});
-}
-}*/
+	}
