@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+// Define the custom exception class
+class InvalidAgeException extends Exception {
+  public InvalidAgeException(String message) {
+    super(message);
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("Enter your age: ");
+    int age = scanner.nextInt();
+
+    // Throw the exception if the age is negative
+    try {
+      if (age < 0) {
+        throw new InvalidAgeException("Age cannot be negative");
+      }
+    } catch (InvalidAgeException e) {
+      System.out.println(e.getMessage());
+    }
+  }
+}
